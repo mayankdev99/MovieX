@@ -1,0 +1,44 @@
+<app-moviefilter
+  [all]="getAllMovies()"
+  [action]="getAllAction()"
+  [adventure]="getAllAdventure()"
+  [drama]="getAllDrama()"
+  [horror]="getAllHorror()"
+  [fantasy]="getAllFantasy()"
+  [anime]="getAllAnime()"
+  [sciencefiction]="getAllScienceFiction()"
+  [warmovies]="getAllWar()"
+  [thriller]="getAllThriller()"
+  (filterradioButtonChanged)="getCount($event)"
+></app-moviefilter>
+<app-moviesearch
+  (onMovieSearchChanged)="getMovieSearched($event)"
+></app-moviesearch>
+
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <ng-container *ngFor="let m of movies">
+        <div class="col-3" *ngIf="(movieSearch === ' ' || m.name.toLowerCase().includes(movieSearch)) && (countRadio === 'all' || countRadio === m.genere)">
+          <div class="cardcontainer">
+            <div class="card-deck card text-white bg-danger mb-3">
+              <div class="card">
+                <img class="card-img-top" [src]=" m.imagesource" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{ m.name }}</h5>
+                  <p class="card-text"><small class="text-muted">Genre - {{ m.genere }}</small></p>
+                  <p class="card-text">{{m.description}}</p>
+                  <p class="card-text"><small class="text-muted">Duration - {{ m.duration }}</small></p>
+                  <p class="card-text"><small class="text-muted">Rating - {{ m.rating }}</small></p>
+                  <p class="card-text"><small class="text-muted">Price - {{ m.price }}</small></p>
+                  <a href="{{m.link}}" class="btn btn-primary">watch</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+

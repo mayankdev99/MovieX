@@ -1,0 +1,34 @@
+<app-filter-series [allS]="getAllSerieses()" [actionS]="getAllActionSeries()" [adventureS]="getAllAdventureSeries()"
+    [dramaS]="getAllDramaSeries()" [horrorS]="getAllHorrorSeries()" [fantasyS]="getAllFantasySeries()"
+    [animeS]="getAllAnimeSeries()" [sciencefictionS]="getAllScienceFictionSeries()"
+    [warmoviesS]="getAllWarSeries()" [thrillerS]="getAllThrillerSeries()"
+    (filterradioButtonChangedSeries)="getCountSeries($event)"></app-filter-series>
+<app-series-search (onMovieSearchChangedSeries)="getMovieSearchedSeries($event)"></app-series-search>
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <ng-container *ngFor="let s of serieses">
+
+                <div class="col-3"
+                    *ngIf="(movieSearchSeries === ' ' || s.name.toLowerCase().includes(movieSearchSeries)) && (countRadioSeries === 'all' || countRadioSeries === s.genere)">
+                    <div class="card-deck card text-white bg-danger mb-3">
+                        <div class="card">
+                            <img class="card-img-top" [src]="s.imagesource" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{s.name}}</h5>
+                                <p class="card-text"><small class="text-muted">Genere- {{s.genere}} </small></p>
+                                <p class="card-text">This is a longer card with supporting text below as a natural
+                                    lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Duration- {{s.duration}}</small></p>
+                                <p class="card-text"><small class="text-muted">Rating- {{s.rating}}</small></p>
+                                <p class="card-text"><small class="text-muted">Price- {{s.price}}</small></p>
+                                <a href="#" class="btn btn-primary">Watch</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

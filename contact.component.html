@@ -1,0 +1,80 @@
+<div class="container">
+    <form #contactForm="ngForm" (ngSubmit)="submitForm(contactForm)">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="inputName">Name</label>
+          <input type="text" class="form-control" id="inputName" placeholder="Your Name"
+                 name="name" required [(ngModel)]="formData['name']">
+          <div *ngIf="contactForm.controls['name']?.touched && contactForm.controls['name']?.invalid" class="text-danger">
+            Please enter your name.
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail">Email</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="Your Email"
+                 name="email" required email [(ngModel)]="formData['email']">
+          <div *ngIf="contactForm.controls['email']?.touched && contactForm.controls['email']?.invalid" class="text-danger">
+            Please enter a valid email address.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputSubject">Subject</label>
+        <input type="text" class="form-control" id="inputSubject" placeholder="Subject"
+               name="subject" required [(ngModel)]="formData['subject']">
+        <div *ngIf="contactForm.controls['subject']?.touched && contactForm.controls['subject']?.invalid" class="text-danger">
+          Please enter the subject.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputMessage">Message</label>
+        <textarea class="form-control" id="inputMessage" rows="5" placeholder="Your Message"
+                  name="message" required [(ngModel)]="formData['message']"></textarea>
+        <div *ngIf="contactForm.controls['message']?.touched && contactForm.controls['message']?.invalid" class="text-danger">
+          Please enter your message.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="contactForm.invalid">Submit</button>
+    </form>
+  
+    <hr>
+  
+    <h2>Contact Information:</h2>
+    <p><strong>Email:</strong> 1191@corporation.com</p>
+    <p><strong>Phone:</strong> +x (yyyy) kkkk-pppp</p>
+    <p><strong>Address:</strong> 1234 Main Street, one square Mile, Autonomous Region of Corporation of London</p>
+  
+    <h2>General Inquiries:</h2>
+    <p>For general inquiries, please reach out to us at info@example.com or give us a call at the provided phone number.</p>
+  
+    <h2>Customer Support:</h2>
+    <p>If you need assistance with your order or have any product-related questions, our dedicated customer support team is here to help. Email us at support@example.com.</p>
+  
+    <h2>Media & Press:</h2>
+    <p>For media inquiries, press releases, or partnership opportunities, please contact our media relations team at media@example.com.</p>
+  
+    <h2>Feedback & Suggestions:</h2>
+    <p>We value your feedback! If you have any suggestions, comments, or ideas on how we can improve our products or services, please let us know at feedback@example.com.</p>
+  
+    <h2>Business Inquiries:</h2>
+    <p>For business inquiries or partnership opportunities, please reach out to our business development team at business@example.com.</p>
+  
+    <h2>Social Media:</h2>
+    <div class="social-media-links">
+      <a href="https://twitter.com" target="_blank">
+        <i class="{{ twitterIcon }}"></i>
+      </a>
+      <a href="https://www.linkedin.com" target="_blank">
+        <i class="{{ linkedInIcon }}"></i>
+      </a>
+      <a href="https://www.facebook.com" target="_blank">
+        <i class="{{ facebookIcon }}"></i>
+      </a>
+      <a href="https://github.com" target="_blank">
+        <i class="{{ githubIcon }}"></i>
+      </a>
+    </div>
+  
+    <p>We look forward to hearing from you and will do our best to respond to your message as soon as possible. Thank you for reaching out to us!</p>
+  </div>
+  
